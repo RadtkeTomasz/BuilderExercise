@@ -1,26 +1,29 @@
-﻿
-using BuilderExercise;
+﻿using BuilderExercise;
 using System.ComponentModel.DataAnnotations;
 
 var car = new CarBuilder()
     .WithModelName("Fiesta")
-    .WithSeats().OfType(Seats.SeatType.Leather)
-    .WithEngine().OfType(Engine.EngineType.Diesel).WithPower(220)
-    .WithTires().OfType(Tires.TireType.Winter)
-    .WithSteeringWheel().OfType(SteeringWheel.SteeringWheelType.Casual).Build();
+    .WithSeats()
+        .OfType(Seats.SeatType.Leather)
+    .WithEngine()
+        .OfType(Engine.EngineType.Diesel).WithPower(220)
+    .WithTires()
+        .OfType(Tires.TireType.Winter)
+    .WithSteeringWheel()
+        .OfType(SteeringWheel.SteeringWheelType.Casual).Build();
 
 var carPrice = car.TotalPrice;
 
 public class Car
 {
     public decimal TotalPrice { get => Engine.Price + Tires.Price + Seats.Price + Paint.Price + SteeringWheel.Price; }
-    public string ModelName { get; set; }
+    public string ModelName { get; set; } = "Default";
 
-    public Engine Engine { get; set; }
-    public Tires Tires { get; set; }
-    public Seats Seats { get; set; }
-    public Paint Paint { get; set; }
-    public SteeringWheel SteeringWheel { get; set; }
+    public Engine Engine { get; set; } = new Engine();
+    public Tires Tires { get; set; } = new Tires();
+    public Seats Seats { get; set; } = new Seats();
+    public Paint Paint { get; set; } = new Paint();
+    public SteeringWheel SteeringWheel { get; set; } = new SteeringWheel();
 }
 
 public class Tires

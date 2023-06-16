@@ -2,7 +2,6 @@
 {
     internal class CarEngineBuilder : CarBuilder
     {
-        private Car car;
         public CarEngineBuilder(Car car ) : base( car ) { }
 
         public CarEngineBuilder OfType(Engine.EngineType type)
